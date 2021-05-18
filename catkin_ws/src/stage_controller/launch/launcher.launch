@@ -1,0 +1,4 @@
+<launch>
+	<node name="stageros" pkg="stage_ros" type="stageros" args="$(find stage_controller)/world/create_hokuyo.world"/>
+	<node pkg="stage_controller" type="stage_controller.py" name="stage_controller" output="screen" />
+</launch>

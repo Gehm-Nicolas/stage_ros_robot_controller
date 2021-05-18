@@ -1,0 +1,2 @@
+beginner_tutorials:stage_controller
+-DCATKIN_DEVEL_PREFIX=/home/gehm/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/gehm/catkin_ws/install -G Unix Makefiles

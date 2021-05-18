@@ -1,0 +1,91 @@
+define hokuyo ranger
+(
+	sensor( 			
+    range [ 0.0  30.0 ]
+    fov 270.25
+   samples 1081
+  )
+
+  # generic model properties
+  color "red"
+  size [ 0.05 0.05 0.1 ]
+)
+
+define block model
+(
+  size [0.200 0.200 0.001]
+  gui_nose 0
+)
+
+define roomba position
+(
+  	size [0.35 0.35 0.25]
+
+  	# This block approximates the circular shape of a Roomba
+ 	
+    origin [-0.05 0 0 0]
+  	color "red"
+  	gui_nose 1
+    drive "diff"
+    localization "odom"
+    odom_error [0.00 0.00 0.00 0.00]
+  	hokuyo( pose [0.050 0.000 0 0.000] )
+)
+
+
+define floorplan model
+(
+  # sombre, sensible, artistic
+  color "gray30"
+
+  # most maps will need a bounding box
+  boundary 1
+
+  gui_nose 0
+  gui_grid 0
+
+  gui_outline 0
+  gripper_return 0
+  fiducial_return 0
+  laser_return 1
+)
+
+# set the resolution of the underlying raytrace model in meters
+resolution 0.02
+
+interval_sim 100  # simulation timestep in milliseconds
+
+
+window
+( 
+  size [ 800.000 600.000 ] 
+  rotate [ 0.000 0.000 ]
+  center [ 10.5  8 ]
+  scale 28.806 
+  show_data 1
+  show_footprints 1
+  show_grid 1
+)
+
+# load an environment bitmap
+floorplan
+( 
+  name "Mapa"
+  bitmap "map.pgm"
+  size [21 16 0.5]
+  pose [ 10.5 8 0 0 ]
+)
+
+
+#roomba( pose [ 9 9 0 0 ] name "roomba_0" color "green")
+#roomba( pose [ 9 8 0 0 ] name "roomba_1" color "blue")
+#roomba( pose [ 8 9 0 0 ] name "roomba_2" color "red")
+#roomba( pose [ 7 13 0 0 ]  name "roomba_3" color "purple")
+#roomba( pose [ 3 9 0 0 ]  name "roomba_3" color "purple")
+#roomba( pose [ 20 7 0 0 ]  name "roomba_3" color "purple")
+roomba( pose [ 8 8 0 0 ]  name "roomba_3" color "purple")
+#roomba( pose [ 0 0 0 0 ]  name "roomba_4" color "yellow")
+block( pose [ 8 13 0 0 ] name "target_0" color "red")
+block( pose [ 17 4.4 0 0 ] name "target_1" color "blue")
+block( pose [ 16.2 12 0 0 ] name "target_2" color "green")
+block( pose [ 2 2 0 0 ] name "target_3" color "yellow")

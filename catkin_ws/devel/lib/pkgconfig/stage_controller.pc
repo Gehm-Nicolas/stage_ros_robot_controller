@@ -1,0 +1,8 @@
+prefix=/home/gehm/catkin_ws/devel
+
+Name: stage_controller
+Description: Description of stage_controller
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
